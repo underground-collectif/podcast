@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const Podcast = require('podcast');
 const AWS = require('aws-sdk');
 
@@ -36,7 +38,7 @@ const feed = new Podcast({
     itunesImage: 'http://static.undergroundcollectif.fr/podcast_cover.png'
 });
 
-const result = await s3.listObjectsV2({
+s3.listObjectsV2({
     Bucket: bucketName,
     Prefix : 'underground_collectif',
 }).promise().then(data => (
